@@ -2,7 +2,7 @@
 https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html
 ## 1.新建代码库
 新建一个git代码库 `git init`  
-新建一个目录，将其初始化为代码库 `gir init [proj-name]`  
+新建一个目录，将其初始化为代码库 `git init [proj-name]`  
 下载一个项目和它整个代码历史 `git clone [url]`
 ## 2.配置
 显示当前的git 配置 `git config --list`  
@@ -54,7 +54,7 @@ https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html
 恢复暂存区指定文件到工作区`git checkout [file]`  
 恢复某个commit的文件到暂存区和工作区`git checkout [commit] [file]`  
 恢复暂存区所有文件到工作区`git checkout .`  
-重置暂存区的指定文件，与上一次commit保持一致，但工作区不变`git reset [file]`
+重置暂存区的指定文件，与上一次commit保持一致，但工作区不变`git reset [file]`  
 重置暂存区与工作区，与上一次commit保持一致`git reset --hard`
 ## 10.其他
 生成一个可供发布的压缩包`git archive`
