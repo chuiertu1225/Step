@@ -22,6 +22,9 @@ Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 * red
 * blue
 * green
+1. red
+2. green
+3. grey
 ### 代码区块
 缩进4个空格或一个制表符，一个代码区块会一直持续到没有缩进的那一行  
 这是一个普通段落：
