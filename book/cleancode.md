@@ -65,7 +65,7 @@
                         throw new InvalidEmployeeType(e.Type);
                 }
             }
-        问题：1.太长，出现新雇员类型变更长 2.违反单一权责原则 3.违反开放闭合原则，添加新类型时，必须修改它 4.使得出现类似 `isPayday(Employee e, Date date)`的函数  D
+        问题：1.太长，出现新雇员类型则更长 2.违反单一权责原则 3.违反开放闭合原则，添加新类型时，必须修改它 4.使得出现类似 `isPayday(Employee e, Date date)`的函数  D
         解决方法：将switch语句埋到抽象工厂下面，不同的函数如`caculatePay、isPayDay`等由Employee接口多态地派遣
 
             puvlic abstract class Employee{
@@ -95,8 +95,7 @@
     - ### 函数参数
         尽量避免三个及以上       
     - ### 指令询问
-        分离指令和询问  
-        `if (set("username","unclebob"))`这句是问username属性是否之前已设置为unclebob或者我username属性值是否成功设置为unclebob，很难判断，分离开来就防止混淆
+        分离指令和询问。`if (set("username","unclebob"))`这句是问username属性是否之前已设置为unclebob或者username属性值是否成功设置为unclebob，很难判断，分离开来防止混淆
             
                 if(atrributeExists("username")){
                     setAttribute("username","unclebob")
