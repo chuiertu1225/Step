@@ -65,8 +65,8 @@
                         throw new InvalidEmployeeType(e.Type);
                 }
             }
-        问题：1.太长，出现新雇员类型变更长 2.违反单一权责原则 3.违反开放闭合原则，添加新类型时，必须修改它 4.使得出现类似 `isPayday(Employee e, Date date)`的函数  
-        解决方法：将switch语句埋到抽象工厂下面，不同的函数如`caculatePay、isPayday`等由Employee接口多态地派遣
+        问题：1.太长，出现新雇员类型变更长 2.违反单一权责原则 3.违反开放闭合原则，添加新类型时，必须修改它 4.使得出现类似 `isPayday(Employee e, Date date)`的函数  D
+        解决方法：将switch语句埋到抽象工厂下面，不同的函数如`caculatePay、isPayDay`等由Employee接口多态地派遣
 
             puvlic abstract class Employee{
                 public abstract boolean isPayDay();
