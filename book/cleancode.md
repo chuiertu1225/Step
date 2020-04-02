@@ -17,7 +17,7 @@
                         list1.add(x);
                 return list1;
             }
-        这段代码有四处问题：1.theList是什么类型 2.thisList零下标条目的意义是什么 3.值4的意义是什么 4.我怎么使用返回的列表
+        这段代码有四处问题：1.theList是什么类型 2.theList零下标条目的意义是什么 3.值4的意义是什么 4.我怎么使用返回的列表
 
             public List<Cell> getFlaggedCells() {
                 List<Cell> flaggedCells = new ArrayList<Cell>();
