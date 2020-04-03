@@ -147,6 +147,36 @@
             Options opts = ctxt.getOptions();
             File scratchDir = opts.getScratchDir();
             final String outputDir = scratchDir.getAbsolutePath();
+- ## 错误处理
+    - ### 使用不可控异常
+        可控异常：每个方法都要列出它可能传递给调用者的所有异常。不好的地方就是一个异常要层层声明，会破坏开放闭合原则。  
+    - ### 注意事项
+        1. 给出异常发生的情况说明
+        2. 依调用者需要定义异常类
+        3. 定义常规流程去避免异常
+   
+                try {
+                    MealExpense expense = expenseReportDao.getMeals(Employee.getID());
+                    m_total += expense.getTotal();
+                } catch(MealexpenseNotFound e) {
+                    m_total += getMealPerDiem();
+                }
+
+            业务逻辑是，如果消耗食物，则计入总额。如果没有消耗，则员工得到当日餐食补贴。其实可以更简洁：
+
+                MealExpense expense = expenseReportDAO.getMeals(Employee.getID());
+                m_total += expense.getTotal();
+
+            这需要修改ExpenseReportDAO，使其总是返回MealExpense对象。如果没有餐盒消耗，就返回一个返回餐盒补贴的MealExpense对象
+
+                public class PerDiemMealExpense implements MealExpenses {
+                    public int getTotal() {
+                        //return the per diem default
+                    }
+                } 
+        4. 不要返回null值
+        5. 不要传递null值
+            可以使用断言去整洁代码
 
         
 
