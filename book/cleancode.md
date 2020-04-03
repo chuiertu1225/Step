@@ -156,7 +156,7 @@
         3. 定义常规流程去避免异常
    
                 try {
-                    MealExpense expense = expenseReportDao.getMeals(Employee.getID());
+                    MealExpense expense = expenseReportDAO.getMeals(Employee.getID());
                     m_total += expense.getTotal();
                 } catch(MealexpenseNotFound e) {
                     m_total += getMealPerDiem();
@@ -175,7 +175,7 @@
                     }
                 } 
         4. 不要返回null值
-        5. 不要传递null值
+        5. 不要传递null值  
             可以使用断言去整洁代码
 
         
