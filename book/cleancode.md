@@ -104,8 +104,53 @@
         用异常代替返回错误码，try...catch语句最好将主体抽离出来
     - ### DRY
         don`t repeat yourself
+- ## 注释
+    程序员不会坚持维护注释，导致注释会撒谎。代码太糟糕的话，不要指望注释。代码已经足够阐述行为。唯一真正好的注释是你想办法不去写的注释。  
+    好的注释为：1.法律信息 2.提供信息 3.解释意图 4.阐述意义 5.TODO  
+    坏的注释为：1.喃喃自语 2.多余注释 3.误导注释 4.循规注释 5.日志注释  
+    而且**注释代码**也是糟糕行为   
+
+- ## 格式
+    垂直方向靠近  
+    变量声明位置尽可能靠近  
+    相关函数放在一起  
+    较高优先级的互相靠近 int a = b + c*c
+
+- ## 对象和数据结构 
+    - ### 数据抽象
+            public class point {
+                public double x;
+                public double y;
+            }
+            public interface Point {
+                double getX();
+                double getY();
+                void set Cartesian();
+                double getR();
+                double getTheta();
+                void setPolar(double r, double theta);
+            }
     
-  
-  
-  
+        下面的代码呈现的不是一种数据结构，类应该暴露抽象接口，不是简单地放上一个函数层。不需要暴露数据细节，而是以抽象形态表述数据
+
+    - ### 数据、对象的反对称性
+        过程式代码（使用数据结构的代码）便于在不改动既有数据结构的前提下添加新函数。面向对象代码便于在不改动既有函数的前提下添加新类。反过来，过程式代码难以添加新数据结构，因为必须修改所有函数。面向对象代码难以添加新函数，因为必须修改所有类。
+
+    - ### 得墨忒定律
+        >模块不应该了解他所操作对象的内部情形
+
+        连串的调用称作火车失事，比如  
+        
+            final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath()
+        修改为
+            
+            Options opts = ctxt.getOptions();
+            File scratchDir = opts.getScratchDir();
+            final String outputDir = scratchDir.getAbsolutePath();
+
+        
+
+
+
+    
   
