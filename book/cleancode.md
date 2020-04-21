@@ -47,7 +47,7 @@
     - ### 语境变量
         对于多步骤的长函数，对于每个步骤抽象成方法，命名符合上下文语境
 
-- ## 第三章 函数
+- ### 第三章 函数
     - ### 短小精简
         缩进层级不应多于一级或两级
     - ### 单一职责
@@ -104,19 +104,19 @@
         用异常代替返回错误码，try...catch语句最好将主体抽离出来
     - ### DRY
         don`t repeat yourself
-- ## 注释
+- ### 第四章 注释
     程序员不会坚持维护注释，导致注释会撒谎。代码太糟糕的话，不要指望注释。代码已经足够阐述行为。唯一真正好的注释是你想办法不去写的注释。  
     好的注释为：1.法律信息 2.提供信息 3.解释意图 4.阐述意义 5.TODO  
     坏的注释为：1.喃喃自语 2.多余注释 3.误导注释 4.循规注释 5.日志注释  
     而且**注释代码**也是糟糕行为   
 
-- ## 格式
+- ### 第五章 格式
     垂直方向靠近  
     变量声明位置尽可能靠近  
     相关函数放在一起  
     较高优先级的互相靠近 int a = b + c*c
 
-- ## 对象和数据结构 
+- ### 第六章 对象和数据结构 
     - ### 数据抽象
             public class point {
                 public double x;
@@ -147,7 +147,7 @@
             Options opts = ctxt.getOptions();
             File scratchDir = opts.getScratchDir();
             final String outputDir = scratchDir.getAbsolutePath();
-- ## 错误处理
+- ### 第七章 错误处理
     - ### 使用不可控异常
         可控异常：每个方法都要列出它可能传递给调用者的所有异常。不好的地方就是一个异常要层层声明，会破坏开放闭合原则。  
     - ### 注意事项
@@ -156,7 +156,7 @@
         3. 定义常规流程去避免异常
    
                 try {
-                    MealExpense expense = expenseReportDAO.getMeals(Employee.getID());
+                    MealExpenses expense = expenseReportDAO.getMeals(Employee.getID());
                     m_total += expense.getTotal();
                 } catch(MealexpenseNotFound e) {
                     m_total += getMealPerDiem();
@@ -164,19 +164,31 @@
 
             业务逻辑是，如果消耗食物，则计入总额。如果没有消耗，则员工得到当日餐食补贴。其实可以更简洁：
 
-                MealExpense expense = expenseReportDAO.getMeals(Employee.getID());
+                MealExpenses expense = expenseReportDAO.getMeals(Employee.getID());
                 m_total += expense.getTotal();
 
             这需要修改ExpenseReportDAO，使其总是返回MealExpense对象。如果没有餐盒消耗，就返回一个返回餐盒补贴的MealExpense对象
 
                 public class PerDiemMealExpense implements MealExpenses {
                     public int getTotal() {
-                        //return the per diem default
+                        // return the per diem default
                     }
                 } 
         4. 不要返回null值
         5. 不要传递null值  
             可以使用断言去整洁代码
+- ### 第八章 边界
+    - ### 使用第三方接口
+
+            public class Sensors {
+                private Map sensors = new HashMap();
+                public Sensor getById(String id){
+                    return (Sensor) sensors.get(id);
+                }
+            }
+        边界上的接口是隐藏的，来自应用程序的影响极小
+    - ### 
+    
 
         
 

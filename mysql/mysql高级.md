@@ -1,0 +1,22 @@
+- ## 层
+    - 连接、服务、引擎、存储
+- ## 慢的原因
+- ### 执行时间长 等待时间长
+    - 查询语句
+    - 索引失效
+        - 创建索引
+            - 单值索引 create index idx_user_name on user(name)
+            - 多值索引 create index idx_user_nameEmail on user(name, email)
+    - 关联查询太多join(设计缺陷或不得已的需求)
+    - 服务器调优及各个参数设置
+- ### 常见的Join查询
+    - SQL执行顺序
+        - 写的顺序
+            - select from where/join on group by having order by limit
+            - ![mysql手写顺序](./manualorder.jpg)
+        - 机读
+            - from on join where group by having select distinct order by limit
+            - ![mysql鱼骨图](./mysqlfish.jpg)
+    - join图
+        - ![mysqljoin图](./mysqljoin_1.jpg)  
+        - ![mysqljoin图](./mysqljoin_2.jpg)
