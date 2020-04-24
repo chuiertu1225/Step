@@ -86,4 +86,32 @@
             - 包含信息
         - 各字段解释
             - id 
-                - 
+                - id相同顺序加载，不同id越高越先执行
+            - select_type
+                - simple    简单的select不包含子查询或union
+                - primary   包括子查询，最外层primary
+                - subquery  子查询括号里面的
+                - derived   在from列表中包含的子查询被标记为derived,mysql会递归执行这些子查询，把结果放在临时表
+                - union     第二个select出现在union之后，被标记为union
+                - union result  从union表获取结果的result
+            - table 显示数据关于哪张表的
+            - type
+                - 最好到最差 System>const>ep_ref>ref>range>index>All
+                - 至少达到range级别，最好达到ref
+                - system：表只有一行数据，这是const类型的特例
+                - const：通过索引一次就找到，const用于比较primary key或unique索引
+                - eq_ref: 唯一索引扫描。对于每个索引键，表中只有一条记录与之匹配
+                - ref: 非唯一性索引扫描，返回匹配某个单独值的所有行
+                - range: 只检索给定范围的行，使用一个索引来选择行。key列显示使用了那个索引。一般就是在where语句出现between and,in,>,<
+                - index full index scan，只遍历索引树
+                - All  full table scan
+            - possible_keys
+                - 显示可能应用在这张表的索引，不一定实际查询中使用
+            - key
+                - 实际使用的索引，null则没有使用。若使用了覆盖索引，则仅出现key表中
+            - key_len
+                - 索引中使用的字节数，查询索引的长度，长度越短越好。显示最大可能长度，并非实际使用长度。
+            - ref
+                - 显示索引的哪一列被使用了，如果可能的话，是一个常数。哪些列或常量被用于查找索引列上的值
+            - rows
+                - 每张表有多少行被优化器查询过
