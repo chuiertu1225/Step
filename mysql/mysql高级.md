@@ -115,3 +115,9 @@
                 - 显示索引的哪一列被使用了，如果可能的话，是一个常数。哪些列或常量被用于查找索引列上的值
             - rows
                 - 每张表有多少行被优化器查询过
+            - extra
+                - Using filesort 无法利用索引完成的排序,需要优化
+                - Using temporary 使用了临时表保存中间结果。常见于order by 和 group by
+                - Using index 表示select 使用了覆盖索引（select数据列只从索引中就能取得，不必读取数据行）
+                - impossible where where子句不匹配
+        - 热身Case
